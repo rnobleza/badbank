@@ -19,6 +19,7 @@ function Balance(){
 function BalanceMsg(props){
   return(<>
     <h5>Success</h5>
+
     <button type="submit" 
       className="btn btn-light" 
       onClick={() => props.setShow(true)}>
@@ -40,24 +41,27 @@ function BalanceForm(props){
     const url = `/account/findOne/${email}`;
     console.log('url' + url);
 
-    fetch(url)
+    fetch(`/account/findOne/${email}`)
     .then(response => response.json())
     .then(data => {
         console.log(data);
-        setData(JSON.stringify(data));
+        console.log(data.balance);
+        props.setShow(false);
+        props.setStatus(data.email + ' balance is ' + data.balance);
+        //props.setData(JSON.stringify(data));
     });
 
     //setBalance(user.balance);
     console.log(user);
     //props.setStatus('Your balance is: ' + user.balance);
-    props.setStatus('Your balance is: ' + data);
+    //props.setStatus('Your balance is: ' + data);
     props.setShow(false);
 
-    return (
+    /*return (
       <>
-      {data}
+      "data" + {data}
       </>
-    );
+    );*/
 
 
     /*if (!user) {
