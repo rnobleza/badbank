@@ -35,6 +35,7 @@ function CreateForm(props){
       var res = await fetch(url);
       var data = await res.json();
       console.log(data);
+      props.setStatus('Welcome to Bad Bank, ' + data.name + data.email);
     })();
     props.setShow(false);
   }    
